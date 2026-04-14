@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 17:14:24 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 16:26:35 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 19:39:49 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 		printf("\033[0;33m\n>>> STRING (%%s) <<<\n");
 			
-		char str[] = "hello";
+		char *str = NULL;
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%s", str);
@@ -53,12 +54,13 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 		printf("\033[0;33m\n>>> (SIGNED) DECIMAL INTEGER (%%d) <<<\n");
 			
-		int a = -4002;
+		int a = 0100;
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%d", a);
@@ -71,7 +73,8 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 		printf("\033[0;33m\n>>> (SIGNED) INTEGER (%%i) <<<\n");
@@ -89,7 +92,8 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 
@@ -108,7 +112,8 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 
@@ -127,7 +132,8 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 		printf("\033[0;33m\n>>> UNSIGNED HEXADECIMAL (upppercase) (%%X) <<<\n");
@@ -145,7 +151,8 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
 
 
 		printf("\033[0;33m\n>>> ADDRESS OF A POINTER (%%p) <<<\n");
@@ -163,7 +170,61 @@ int	main(void)
 			diff = i - n;
 			if (diff != 0)
 				printf("\033[1;31m>>>diff = %d\n\n", diff);
-			printf("\033[0;32m>>>diff = 0\n\n");
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
+
+
+
+		printf("\033[0;33m\n>>> DOUBLE PERCENTAGE SIGN (%%) <<<\n");
+			
+
+			printf("\033[1;37mprintf > \n");
+			i =	printf("%% %% %%");
+			printf("\nn = %d\n\n", i);
+
+			printf("ft_printf > \n");
+			n =	ft_printf("%% %% %%");
+			printf("\nn = %d\n\n", n);
+
+			diff = i - n;
+			if (diff != 0)
+				printf("\033[1;31m>>>diff = %d\n\n", diff);
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
+
+
+
+		printf("\033[0;33m\n>>> MIX <<<\n");
+			
+
+			printf("\033[1;37mprintf > \n");
+			i =	printf("%% %% %% hello %d %u %%%s ", -1, 5, "MIXXXX");
+			printf("\nn = %d\n\n", i);
+
+			printf("ft_printf > \n");
+			n =	ft_printf("%% %% %% hello %d %u %%%s ", -1, 5, "MIXXXX");
+			printf("\nn = %d\n\n", n);
+
+			diff = i - n;
+			if (diff != 0)
+				printf("\033[1;31m>>>diff = %d\n\n", diff);
+			else
+				printf("\033[0;32m>>>diff = 0\n\n");
+
+//undefined behavior?
+			// printf("\033[1;37mprintf > \n");
+			// i =	printf("%p % ", NULL);
+			// printf("\nn = %d\n\n", i);
+
+			// printf("ft_printf > \n");
+			// n =	ft_printf("%p % ", NULL);
+			// printf("\nn = %d\n\n", n);
+
+			// diff = i - n;
+			// if (diff != 0)
+			// 	printf("\033[1;31m>>>diff = %d\n\n", diff);
+			// else
+			// 	printf("\033[0;32m>>>diff = 0\n\n");
 
 	return (0);
 }

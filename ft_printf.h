@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 13:37:47 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 16:05:58 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 19:32:06 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdint.h>
 
 int		ft_printf(const char *format_str, ...);
-void	format(char format_char, va_list args, int *counter);
+int		format(char format_char, va_list args);
 int		print_ptr(unsigned long long ptr);
 int		print_char(int c);
 int		print_str(char *str);

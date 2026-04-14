@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/14 13:55:04 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 14:31:44 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 19:36:07 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int	print_str(char *str)
 {
 	int	len;
 
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return(6);
+	}
 	len = ft_strlen(str);
 	write(1, str, len);
 	return(len);
@@ -39,12 +44,12 @@ int	print_str(char *str)
 
 int	putnbr_base_signed(signed long long nbr, char *base)
 {
-	char	c;
+	char			c;
 	int		len_base;
-	int		index;
-	int 	count;
+	int				index;
+	int 			count;
 	
-	count = 1;
+	count = 0;
 	len_base = ft_strlen(base);
 	if (nbr < 0)
 	{
@@ -56,7 +61,7 @@ int	putnbr_base_signed(signed long long nbr, char *base)
 		count += putnbr_base_signed(nbr / len_base, base);
 	index = nbr % len_base;
 	c = base[index];
-	write (1, &c, 1);
+	count += write (1, &c, 1);
 	return (count);
 }
 
@@ -67,13 +72,13 @@ int	putnbr_base_unsigned(unsigned long long nbr, char *base)
 	int				index;
 	int				count;
 	
-	count = 1;
+	count = 0;
 	len_base = ft_strlen(base);
 	if (nbr >= len_base)
 		count += putnbr_base_unsigned(nbr / len_base, base);
 	index = nbr % len_base;
 	c = base[index];
-	write (1, &c, 1);
+	count += write (1, &c, 1);
 	return (count);
 }
 
