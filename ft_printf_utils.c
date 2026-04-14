@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/14 13:55:04 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 19:36:07 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/15 00:41:28 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	putnbr_base_signed(signed long long nbr, char *base)
 	int		len_base;
 	int				index;
 	int 			count;
-	
+
 	count = 0;
 	len_base = ft_strlen(base);
 	if (nbr < 0)
@@ -71,7 +71,7 @@ int	putnbr_base_unsigned(unsigned long long nbr, char *base)
 	unsigned int	len_base;
 	int				index;
 	int				count;
-	
+
 	count = 0;
 	len_base = ft_strlen(base);
 	if (nbr >= len_base)

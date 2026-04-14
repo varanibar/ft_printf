@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 13:37:47 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 19:32:06 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/15 00:41:26 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>//write
 # include <stdarg.h>
 # include <stddef.h>
-# include <unistd.h>
 # include <stdint.h>
 
 int		ft_printf(const char *format_str, ...);
