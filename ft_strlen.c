@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: varaniba <varaniba@student.42.fr>            +#+                     */
+/*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/11 13:36:40 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/13 19:31:10 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:51:30 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

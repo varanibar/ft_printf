@@ -3,15 +3,14 @@
 /*                                                        ::::::::            */
 /*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: varaniba <varaniba@student.42.fr>            +#+                     */
+/*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 14:31:51 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/13 19:27:10 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:58:07 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	print_char(int c)
 {
@@ -66,7 +65,6 @@ int	putnbr_base_unsigned(unsigned long long nbr, char *base)
 	count += write (1, &c, 1);
 	return (count);
 }
-
 
 int	print_ptr(unsigned long long ptr)
 {
@@ -124,4 +122,3 @@ int	ft_printf(const char *format_str, ...)
 	va_end(args);
 	return(counter);
 }
-

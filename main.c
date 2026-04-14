@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: varaniba <varaniba@student.42.fr>            +#+                     */
+/*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 17:14:24 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/13 19:22:02 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:51:37 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
