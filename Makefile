@@ -1,16 +1,12 @@
 NAME = libftprintf.a
 
-LIBFT_A = libft.a
-
-LIBFT_DIR = ./libft
-
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -18,24 +14,17 @@ AR = ar csr
 
 all: $(NAME) 
 
-$(NAME): $(OBJS) $(LIBFT_A)
-	$(AR) $(NAME) $(OBJS) $(LIBFT_DIR)/$(LIBFT_A)
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS) 
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
-
-test: $(LIBFT_A)
-
-$(LIBFT_A):
-	make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
-	make clean -C $(LIBFT_DIR)
 
 fclean:	clean
 	$(RM) $(NAME)
-	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
