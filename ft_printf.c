@@ -6,65 +6,11 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 14:31:51 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 13:58:07 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 14:27:06 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	print_char(int c)
-{
-	ft_putchar_fd(c, 1);
-	return(1);
-}
-
-int	print_str(char *str)
-{
-	ft_putstr_fd(str, 1);
-	return(ft_strlen(str));
-}
-
-int	putnbr_base_signed(signed int nbr, char *base)
-{
-	long	n;
-	char	c;
-	int		len_base;
-	int		index;
-	int 	count;
-	
-	count = 0;
-	len_base = ft_strlen(base);
-	n = nbr;
-	if (n < 0)
-	{
-		write (1, "-", 1);
-		n = -n;
-		count ++;
-	}
-	if (n >= len_base)
-		count += putnbr_base_signed(n / len_base, base);
-	index = n % len_base;
-	c = base[index];
-	count += write (1, &c, 1);
-	return (count);
-}
-
-int	putnbr_base_unsigned(unsigned long long nbr, char *base)
-{
-	char			c;
-	unsigned int	len_base;
-	int				index;
-	int				count;
-	
-	count = 0;
-	len_base = ft_strlen(base);
-	if (nbr >= len_base)
-		count += putnbr_base_unsigned(nbr / len_base, base);
-	index = nbr % len_base;
-	c = base[index];
-	count += write (1, &c, 1);
-	return (count);
-}
 
 int	print_ptr(unsigned long long ptr)
 {
@@ -81,21 +27,21 @@ int	print_ptr(unsigned long long ptr)
 	return (count);
 }
 
-void	format(char format_c, va_list args, int *counter)
+void	format(char format_char, va_list args, int *counter)
 {
-	if (format_c == 'c')
+	if (format_char == 'c')
 		*counter += print_char(va_arg(args, int));
-	else if (format_c == 's')
+	else if (format_char == 's')
 		*counter += print_str(va_arg(args, char *));
-	else if (format_c == 'd' || format_c == 'i')
+	else if (format_char == 'd' || format_char == 'i')
 		*counter += putnbr_base_signed(va_arg(args, signed int), "0123456789");
-	else if (format_c == 'u' )
+	else if (format_char == 'u' )
 		*counter += putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789");
-	else if (format_c == 'x')
+	else if (format_char == 'x')
 		*counter += putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789abcdef");
-	else if (format_c == 'X')
+	else if (format_char == 'X')
 		*counter += putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789ABCDEF");
-	else if (format_c == 'p')
+	else if (format_char == 'p')
 		*counter += print_ptr(va_arg(args, uintptr_t));
 }
 

@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 17:14:24 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 13:51:37 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 14:45:40 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	main(void)
 	int i;
 	int n;
 
-	printf("\n\n>>> CHARACTER (%%c) <<<\n");
+	printf("\033[1;31m\n\n>>> CHARACTER (%%c) <<<\n");
 
-	printf("printf > \n");
+	printf("\033[1;37mprintf > ");
 	i =	printf("%c", 'a');
 	printf("\ni = %d\n\n", i);
 
-	printf("ft_printf > \n");
+	printf("ft_printf > ");
 	n =	ft_printf("%c", 'a');
 	printf("\nn = %d\n\n", n);
 

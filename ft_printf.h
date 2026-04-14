@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 13:37:47 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/14 13:53:00 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/14 14:29:43 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
-// # include "./libft/libft.h"
 
 int		ft_printf(const char *format_str, ...);
-void	format(char format_c, va_list args, int *counter);
-int		putnbr_base_unsigned(unsigned long long nbr, char *base);
-int		putnbr_base_signed(signed int nbr, char *base);
-int		print_str(char *str);
+void	format(char format_char, va_list args, int *counter);
+int		print_ptr(unsigned long long ptr);
 int		print_char(int c);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-size_t	ft_strlen(const char *s);
+int		print_str(char *str);
+int		putnbr_base_signed(signed long long nbr, char *base);
+int		putnbr_base_unsigned(unsigned long long nbr, char *base);
 
 #endif
