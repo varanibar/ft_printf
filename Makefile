@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRCS = ft_printf.c ft_printf_utils.c
+SRCS = ft_printf.c ft_printf_utils.c ft_strchr.c ft_strlen.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -12,10 +12,10 @@ RM = rm -f
 
 AR = ar csr
 
-all: $(NAME) 
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS) 
+	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -6,29 +6,19 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/14 13:55:04 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/15 00:41:28 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/16 16:37:41 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	print_char(int c)
+int	ft_print_char(int c)
 {
 	write(1, &c, 1);
 	return(1);
 }
 
-int	print_str(char *str)
+int	ft_print_str(char *str)
 {
 	int	len;
 
@@ -42,14 +32,29 @@ int	print_str(char *str)
 	return(len);
 }
 
-int	putnbr_base_signed(signed long long nbr, char *base)
+int	ft_print_ptr(void *ptr)
 {
-	char			c;
-	int		len_base;
-	int				index;
-	int 			count;
+	int	count;
 
 	count = 0;
+	if (!ptr)
+		count += write(1, "(nil)", 5);
+	else
+	{
+		count += write(1, "0x", 2);
+		count += ft_putnbr_base((long long)ptr, "0123456789abcdef");
+	}
+	return (count);
+}
+
+int	ft_putnbr_base(long long nbr, char *base)
+{
+	char	c;
+	int		len_base;
+	int		index;
+	int		count;
+
+	count = 1;
 	len_base = ft_strlen(base);
 	if (nbr < 0)
 	{
@@ -58,27 +63,11 @@ int	putnbr_base_signed(signed long long nbr, char *base)
 		count ++;
 	}
 	if (nbr >= len_base)
-		count += putnbr_base_signed(nbr / len_base, base);
+		count += ft_putnbr_base(nbr / len_base, base);
 	index = nbr % len_base;
 	c = base[index];
-	count += write (1, &c, 1);
+	write (1, &c, 1);
 	return (count);
 }
 
-int	putnbr_base_unsigned(unsigned long long nbr, char *base)
-{
-	char			c;
-	unsigned int	len_base;
-	int				index;
-	int				count;
-
-	count = 0;
-	len_base = ft_strlen(base);
-	if (nbr >= len_base)
-		count += putnbr_base_unsigned(nbr / len_base, base);
-	index = nbr % len_base;
-	c = base[index];
-	count += write (1, &c, 1);
-	return (count);
-}
 

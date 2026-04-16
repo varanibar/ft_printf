@@ -6,62 +6,44 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 14:31:51 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/15 00:41:30 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/16 16:37:22 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-
-int	print_ptr(unsigned long long ptr)
+int	ft_print_format(char specif, va_list args)
 {
 	int	count;
 
 	count = 0;
-	if (!ptr)
-		count += write(1, "(nil)", 5);
-	else
-	{
-		count += write(1, "0x", 2);
-		count += putnbr_base_unsigned(ptr, "0123456789abcdef");
-	}
+	if (specif == 'c')
+		count += ft_print_char(va_arg(args, int));
+	else if (specif == 's')
+		count += ft_print_str(va_arg(args, char *));
+	else if (specif == 'd' || specif == 'i')
+		count += ft_putnbr_base(va_arg(args, int), "0123456789");
+	else if (specif == 'u' )
+		count += ft_putnbr_base(va_arg(args, unsigned int), "0123456789");
+	else if (specif == 'x')
+		count += ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef");
+	else if (specif == 'X')
+		count += ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF");
+	else if (specif == 'p')
+		count += ft_print_ptr(va_arg(args, void *));
+	else if (specif == '%')
+		count += write(1, "%", 1);
 	return (count);
 }
 
-int	format(char format_char, va_list args)
+int	ft_check_format(char specif, int *counter)
 {
-	int	counter;
-
-	counter = 0;
-	if (format_char == 'c')
-		counter += print_char(va_arg(args, int));
-	else if (format_char == 's')
-		counter += print_str(va_arg(args, char *));
-	else if (format_char == 'd' || format_char == 'i')
-		counter += putnbr_base_signed(va_arg(args, signed int), "0123456789");
-	else if (format_char == 'u' )
-		counter += putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789");
-	else if (format_char == 'x')
-		counter += putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789abcdef");
-	else if (format_char == 'X')
-		counter += putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789ABCDEF");
-	else if (format_char == 'p')
-		counter += print_ptr(va_arg(args, uintptr_t));
-	else if (format_char == '%')
-		counter += write(1, "%", 1);
-	return (counter);
+	if (specif == '\0' || !ft_strchr("csdiuxXp%", specif))
+	{
+		*counter = -1;
+		return (0);
+	}
+	return (1);
 }
 
 int	ft_printf(const char *format_str, ...)
@@ -79,11 +61,9 @@ int	ft_printf(const char *format_str, ...)
 	{
 		if (format_str[i] == '%')
 		{
-			if (format_str[i + 1] == '\0')
-				return (-1);
-			else if (!ft_strchr("csdiuxXp%", format_str[i + 1]))
-				return (-1);
-			counter += format(format_str[++i], args);
+			if (!ft_check_format(format_str[i + 1], &counter))
+				break ;
+			counter += ft_print_format(format_str[++i], args);
 		}
 		else
 			counter += write(1, &format_str[i], 1);

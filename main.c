@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 17:14:24 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/15 00:41:23 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/16 16:32:12 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(void)
 	int diff;
 
 
-		printf("\033[0;33m\n>>> CHARACTER (%%c) <<<\n");
+	printf("\033[0;33m\n>>> CHARACTER (%%c) <<<\n");
 
-		char x = 'a';
+		char x = '$';
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%c", x);
@@ -39,7 +39,7 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-		printf("\033[0;33m\n>>> STRING (%%s) <<<\n");
+	printf("\033[0;33m\n>>> STRING (%%s) <<<\n");
 
 		char *str = NULL;
 
@@ -58,9 +58,9 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-		printf("\033[0;33m\n>>> (SIGNED) DECIMAL INTEGER (%%d) <<<\n");
+	printf("\033[0;33m\n>>> (SIGNED) DECIMAL INTEGER (%%d) <<<\n");
 
-		int a = 0100;
+		int a = 42;
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%d", a);
@@ -77,9 +77,9 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-		printf("\033[0;33m\n>>> (SIGNED) INTEGER (%%i) <<<\n");
+	printf("\033[0;33m\n>>> (SIGNED) INTEGER (%%i) <<<\n");
 
-		int b = -4002;
+		int b = -42;
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%i", b);
@@ -97,7 +97,7 @@ int	main(void)
 
 
 
-		printf("\033[0;33m\n>>> UNSIGNED DECIMAL (%%u) <<<\n");
+	printf("\033[0;33m\n>>> UNSIGNED DECIMAL (%%u) <<<\n");
 
 		int c = -42;
 
@@ -117,9 +117,9 @@ int	main(void)
 
 
 
-		printf("\033[0;33m\n>>> UNSIGNED HEXADECIMAL (lowercase) (%%x) <<<\n");
+	printf("\033[0;33m\n>>> UNSIGNED HEXADECIMAL (lowercase) (%%x) <<<\n");
 
-		int d = -42;
+		int d = 42;
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%x", d);
@@ -136,9 +136,9 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-		printf("\033[0;33m\n>>> UNSIGNED HEXADECIMAL (upppercase) (%%X) <<<\n");
+	printf("\033[0;33m\n>>> UNSIGNED HEXADECIMAL (upppercase) (%%X) <<<\n");
 
-		int e = -42;
+		int e = 42;
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%X", e);
@@ -155,7 +155,7 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-		printf("\033[0;33m\n>>> ADDRESS OF A POINTER (%%p) <<<\n");
+	printf("\033[0;33m\n>>> ADDRESS OF A POINTER (%%p) <<<\n");
 
 		char *ptr = str;
 
@@ -174,8 +174,7 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-
-		printf("\033[0;33m\n>>> DOUBLE PERCENTAGE SIGN (%%) <<<\n");
+	printf("\033[0;33m\n>>> DOUBLE PERCENTAGE SIGN (%%) <<<\n");
 
 
 			printf("\033[1;37mprintf > \n");
@@ -193,16 +192,15 @@ int	main(void)
 				printf("\033[0;32m>>>diff = 0\n\n");
 
 
-
-		printf("\033[0;33m\n>>> MIX <<<\n");
+	printf("\033[0;33m\n>>> MIX <<<\n");
 
 
 			printf("\033[1;37mprintf > \n");
-			i =	printf("%% %% %% hello %d %u %%%s ", -1, 5, "MIXXXX");
+									i =	printf("hello %d %u %% %s %p", -1, 5, "MIXXXX", NULL);
 			printf("\nn = %d\n\n", i);
 
 			printf("ft_printf > \n");
-			n =	ft_printf("%% %% %% hello %d %u %%%s ", -1, 5, "MIXXXX");
+								n =	ft_printf("hello %d %u %% %s %p", -1, 5, "MIXXXX", NULL);
 			printf("\nn = %d\n\n", n);
 
 			diff = i - n;
@@ -211,20 +209,20 @@ int	main(void)
 			else
 				printf("\033[0;32m>>>diff = 0\n\n");
 
-//undefined behavior?
-			printf("\033[1;37mprintf > \n");
-			i =	printf("%");
-			printf("\nn = %d\n\n", i);
+	// printf("\033[0;33m\n>>> undefined behavior <<<\n");
+	// 		printf("\033[1;37mprintf > \n");
+	// 		i =	printf("%");
+	// 		printf("\nn = %d\n\n", i);
 
-			printf("ft_printf > \n");
-			n =	ft_printf("%");
-			printf("\nn = %d\n\n", n);
+	// 		printf("ft_printf > \n");
+	// 		n =	ft_printf("%");
+	// 		printf("\nn = %d\n\n", n);
 
-			// diff = i - n;
-			// if (diff != 0)
-			// 	printf("\033[1;31m>>>diff = %d\n\n", diff);
-			// else
-			// 	printf("\033[0;32m>>>diff = 0\n\n");
+	// 		diff = i - n;
+	// 		if (diff != 0)
+	// 			printf("\033[1;31m>>>diff = %d\n\n", diff);
+	// 		else
+	// 			printf("\033[0;32m>>>diff = 0\n\n");
 
 	return (0);
 }
