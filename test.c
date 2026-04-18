@@ -1,19 +1,22 @@
-#include <unistd.h>
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+int	main(void)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-int main(void)
-{
-	char str[] = "";
-	char *ptr = str;
-	write(1, ptr, ft_strlen(str));
-	return(0);
+	char	c = 'a';
+	int		d = -42;
+	char	s[] = "hello world";
+	char	*p = s;
+	int		u = 42;
+	int		x = 42;
+	int		X = 42;
+	ft_printf("\n>>>> TESTING FT_PRINTF <<<<\n\n");
+	ft_printf("%%c > %c\n", c);
+	ft_printf("%%d > %d\n", d);
+	ft_printf("%%s > %s\n", s);
+	ft_printf("%%p > %p\n", p);
+	ft_printf("%%u > %u\n", u);
+	ft_printf("%%x > %x\n", x);
+	ft_printf("%%X > %X\n", X);
+	ft_printf("%%  > printing a lonely %% sign\n\n");
+	return (0);
 }

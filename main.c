@@ -6,7 +6,7 @@
 /*   By: varaniba <varaniba@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 17:14:24 by varaniba      #+#    #+#                 */
-/*   Updated: 2026/04/16 16:32:12 by varaniba      ########   odam.nl         */
+/*   Updated: 2026/04/18 16:21:01 by varaniba      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(void)
 
 	printf("\033[0;33m\n>>> STRING (%%s) <<<\n");
 
-		char *str = NULL;
+		char str[] = "hola";
 
 			printf("\033[1;37mprintf > \n");
 			i =	printf("%s", str);
