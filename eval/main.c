@@ -17,6 +17,6 @@ int	main(void)
 	ft_printf("%%u > %u\n", u);
 	ft_printf("%%x > %x\n", x);
 	ft_printf("%%X > %X\n", X);
-	ft_printf("%%  > printing a lonely %% sign\n\n");
+	ft_printf("%%%% > printing a lonely %% sign\n\n");
 	return (0);
 }
